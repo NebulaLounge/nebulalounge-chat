@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connessione alla NebulaLounge 🚀</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f7f9fc;
+    }
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+    }
+    .sidebar {
+      flex: 1 1 40%;
+      background-color: #003374;
+      color: white;
+      padding: 30px;
+      border-radius: 12px 0 0 12px;
+    }
+    .sidebar h2 {
+      margin-top: 0;
+      color: #ea5906;
+    }
+    .sidebar ul {
+      padding-left: 20px;
+    }
+    .form-area {
+      flex: 1 1 60%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    }
+    .form-area h3 {
+      color: #003374;
+      margin-top: 0;
+    }
+    input, select, button {
+      width: 100%;
+      margin: 12px 0;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #ea5906;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d35505;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="sidebar">
+      <h2>#NebulaLounge</h2>
+      <p><em>Connessione in corso alla stanza 🚀</em></p>
+      <ul>
+        <li>🌌 Chat libera e accogliente</li>
+        <li>🛡️ Accesso protetto con CAPTCHA</li>
+        <li>📢 Link o badge promozionali qui</li>
+        <li>🔗 info.nebula lounge + banner</li>
+      </ul>
+    </div>
+    <div class="form-area">
+      <h3>Accedi alla chat</h3>
+      <input type="text" id="nickinput" placeholder="Nickname *" required />
+      <select id="sexselect">
+        <option value="">Sono...</option>
+        <option value="M">👨 Uomo</option>
+        <option value="F">👩 Donna</option>
+      </select>
+      <select id="lookingselect">
+        <option value="">Cerco...</option>
+        <option value="F">👩 Donna</option>
+        <option value="M">👨 Uomo</option>
+      </select>
+      <input type="text" id="cityinput" placeholder="Città (opzionale)" />
+
+      <!-- CAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="TUO_SITE_KEY"></div>
+
+      <button onclick="verificaReCaptcha()">Entra in Chat</button>
+    </div>
+  </div>
+
+  <script>
+    function verificaReCaptcha() {
+      const response = grecaptcha.getResponse();
+      if (!response) {
+        alert("Completa il CAPTCHA per continuare.");
+        return;
+      }
+
+      const nick = document.getElementById('nickinput').value;
+      const sex = document.getElementById('sexselect').value;
+      const looking = document.getElementById('lookingselect').value;
+      const city = document.getElementById('cityinput').value;
+
+      if (!nick || !sex || !looking) {
+        alert("Compila tutti i campi obbligatori.");
+        return;
+      }
+
+      localStorage.setItem("nick", nick);
+      localStorage.setItem("sex", sex);
+      localStorage.setItem("looking", looking);
+      localStorage.setItem("city", city);
+
+      window.location.href = "join.html";
+    }
+  </script>
+</body>
+</html>
