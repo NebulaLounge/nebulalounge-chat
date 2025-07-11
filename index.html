@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>NebulaLounge – Inizia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #003374;
+      color: #fff;
+    }
+
+    .cover {
+      background: linear-gradient(rgba(234, 89, 6, 0.25), rgba(0, 51, 116, 0.45)),
+                  url('https://www.indelibile.it/wp-content/uploads/2025/06/063fce2d-0d25-443c-912c-f579bdb246dd-1024x576.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .box {
+      background-color: rgba(44, 62, 80, 0.6);
+      color: #ffffff;
+      border-radius: 13px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      text-align: center;
+      padding: 30px;
+      max-width: 440px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInBox 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeInBox {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+.title {
+    text-align: center;
+    font-size: 36px; /* Imposta la dimensione del testo */
+    color: #ea5906;
+    margin-bottom: 15px;
+}
+
+.nebula {
+    display: inline-block;
+    position: relative;
+}
+
+.rocket {
+    position: absolute;
+    left: -55px; /* Posiziona il razzo più a sinistra, regolabile */
+    top: 25%; /* Allinea verticalmente il razzo al centro del testo */
+    transform: translateY(-50%); /* Aggiusta la posizione verticale */
+}
+
+    .box h1 {
+      color: #ea5906;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 42px;
+      font-size: 38px; /* Più grande per un aspetto accattivante */
+      font-family: 'Georgia', serif; /* Un font elegante e raffinato */
+    }
+
+    .box .poetico {
+      font-size: 1.1em;
+      margin: 15px 0 25px 0;
+      line-height: 1.4;
+    }
+
+    .banner {
+      width: 300px;
+      height: 250px;
+      background-color: #fff;
+      color: #003374;
+      border: 2px solid #ea5906;
+      border-radius: 8px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      background-color: #ea5906;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #d25505;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .box {
+        padding: 20px;
+      }
+      .banner {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="box">
+         <h1 class="title">Benvenuti nella <span class="nebula">NebulaLounge <span class="rocket">🚀</span></span></h1>
+
+
+
+      <div class="banner">
+        📢 Banner provvisorio 300×250
+      </div>
+<p class="poetico"><strong>
+    Incontra, flirta, ama.<br>
+    Una chat libera dove tutto può cominciare.<br>
+    Amicizie, incontri e nuove avventure ti aspettano.
+</strong></p>
+
+      <div class="buttons">
+        <a href="entra.html">🔵 Entra in Chat</a>
+        <a href="https://partnerwebsite.com" target="_blank">🧡 Sezione Incontri</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
