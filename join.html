@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NebulaLounge – Connessione</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 96%;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    #introText {
+      text-align: center;
+      margin-bottom: 8px;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+
+    #introText h2 {
+      color: #3f51b5;
+      margin-bottom: 4px;
+    }
+
+    #introText p {
+      font-size: 17px;
+      color: #333;
+      margin-top: 4px;
+    }
+
+    #welcomeText {
+      display: none;
+      text-align: center;
+      margin-top: 4px;
+      font-size: 17px;
+      color: #444;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    iframe {
+      width: 100%;
+      height: 640px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.06);
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="introText">
+      <h2>Connessione in corso alla stanza <strong>#NebulaLounge</strong> 🚀</h2>
+      <p>
+        Ciao <strong><span id="nickDisplay">...</span></strong>,
+        stai cercando <strong><span id="lookingDisplay">...</span></strong>
+        da <strong><span id="cityDisplay">...</span></strong>.
+      </p>
+    </div>
+
+    <div id="welcomeText">
+      <strong>Benvenuto nella chat #NebulaLounge.</strong><br />
+      Se entri come “guest”, assicurati che il nickname non sia già registrato.
+    </div>
+
+    <audio id="welcomeAudio" preload="auto">
+      <source src="https://www.indelibile.it/wp-content/uploads/2025/07/simple-notification-152054.mp3" type="audio/mp3" />
+    </audio>
+
+    <form id="hiddenForm" action="https://kw-rr.simosnap.com/login.php" method="post" target="chatFrame">
+      <input type="hidden" name="nick" id="nickField" />
+      <input type="hidden" name="sex" id="sexField" />
+      <input type="hidden" name="looking" id="lookingField" />
+      <input type="hidden" name="location" id="cityField" />
+      <input type="hidden" name="channel" value="#NebulaLounge" />
+      <input type="hidden" name="title" value="NebulaLounge Chat" />
+      <input type="hidden" name="theme" value="Sky" />
+      <input type="hidden" name="layout" value="moderno" />
+      <input type="hidden" name="conference" value="true" />
+      <input type="hidden" name="fileuploader" value="true" />
+      <input type="hidden" name="show_joinparts" value="true" />
+    </form>
+
+    <iframe name="chatFrame" id="chatFrame" title="Chat NebulaLounge"></iframe>
+  </div>
+
+<script>
+  window.onload = function () {
+    const nick = localStorage.getItem("nick");
+    const sex = localStorage.getItem("sex");
+    const looking = localStorage.getItem("looking");
+    const city = localStorage.getItem("city") || "una città non specificata";
+
+    document.getElementById("nickDisplay").innerText = nick || "ospite";
+    document.getElementById("lookingDisplay").innerText =
+      looking === "F" ? "una donna" :
+      looking === "M" ? "un uomo" : "qualcuno";
+    document.getElementById("cityDisplay").innerText = city;
+
+    document.getElementById("nickField").value = nick || "";
+    document.getElementById("sexField").value = sex || "";
+    document.getElementById("lookingField").value = looking || "";
+    document.getElementById("cityField").value = city;
+
+    document.getElementById("hiddenForm").submit();
+
+    const intro = document.getElementById("introText");
+    const welcome = document.getElementById("welcomeText");
+    const audio = document.getElementById("welcomeAudio");
+
+    document.getElementById("chatFrame").addEventListener("load", () => {
+      setTimeout(() => {
+        intro.style.opacity = "0";
+
+        setTimeout(() => {
+          intro.style.display = "none";
+          welcome.style.display = "block";
+          welcome.style.opacity = "1";
+
+          // Tentativo di riproduzione audio dopo caricamento
+          audio.play().catch(() => {
+            console.log("Audio non autorizzato dal browser. Serve interazione utente.");
+          });
+
+        }, 1000);
+      }, 7000);
+    });
+  };
+</script>
+</body>
+</html>

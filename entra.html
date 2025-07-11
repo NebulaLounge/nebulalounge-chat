@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entra nella NebulaLounge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #3f51b5;
+      margin-bottom: 10px;
+    }
+    input, select, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    button {
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #303f9f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Chat NebulaLounge</h2>
+    <p>Inserisci i tuoi dati per accedere alla chat:</p>
+
+    <input type="text" id="nickinput" placeholder="Nickname *" required />
+
+    <select id="sexselect">
+      <option value="">Sono...</option>
+      <option value="M">👨 Uomo</option>
+      <option value="F">👩 Donna</option>
+    </select>
+
+    <select id="lookingselect">
+      <option value="">Cerco...</option>
+      <option value="F">👩 Donna</option>
+      <option value="M">👨 Uomo</option>
+    </select>
+
+    <input type="text" id="cityinput" placeholder="Città (opzionale)" />
+
+    <button onclick="vaiAllaVerifica()">Entra in Chat</button>
+  </div>
+
+  <script>
+    function vaiAllaVerifica() {
+      const nick = document.getElementById('nickinput').value;
+      const sex = document.getElementById('sexselect').value;
+      const looking = document.getElementById('lookingselect').value;
+      const city = document.getElementById('cityinput').value;
+
+      if (!nick || !sex || !looking) {
+        alert("Per favore compila tutti i campi obbligatori.");
+        return;
+      }
+
+      // Salva i dati nel browser
+      localStorage.setItem("nick", nick);
+      localStorage.setItem("sex", sex);
+      localStorage.setItem("looking", looking);
+      localStorage.setItem("city", city);
+
+      // Reindirizza alla pagina entra/join
+      window.location.href = "join/";
+    }
+  </script>
+</body>
+</html>
